@@ -37,3 +37,7 @@ lib/libxxx.so:
 If you like to log what's going on you can use `@(call _special,BUILDING $@)` before the build command. `$@` is a variable containing the target's rule so `libxxx.so`. `_special` can be replaced by `_header`, `sub-header` or `build-msg`.
 
 An example can be seen [here](https://github.com/Hazurl/Makefile/blob/master/Makefile#L103) (`sed '/s/^/\t/'` is used to offset each output message by one tabulation).
+
+## How to use
+
+Just copy the [Makefile](https://github.com/Hazurl/Makefile/blob/master/Makefile) in your project and set it up.
