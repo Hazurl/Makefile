@@ -136,6 +136,8 @@ _header = echo -e "$(_COLOR_CYAN)$(_BOLD)>>> $(1)$(_RESET)"
 _sub-header = echo -e "$(_COLOR_GREEN)>>> $(1)$(_RESET)"
 # _build-msg <target> <from>
 _build-msg = echo -e "$(_COLOR_WHITE):: Building $(_BOLD)$(1)$(_RESET)$(_COLOR_WHITE) from $(_BOLD)$(2)$(_RESET)"
+# _special <message>
+_special = echo -e "$(_COLOR_MAGENTA)$(_BOLD)$(1)$(_RESET)"
 
 # not <value>
 # return an empty string if value is not
@@ -252,9 +254,9 @@ re-static:
 run:
 	@make executable
 	@echo
-	@$(call _sub-header,EXECUTING $(TARGET_EXE)...)
+	@$(call _special,# EXECUTING $(TARGET_EXE)...)
 	@$(TARGET_EXE)
-	@$(call _sub-header,PROGRAM HALT WITH CODE $$?)
+	@$(call _special,# PROGRAM HALT WITH CODE $$?)
 
 re-run:
 	@make re-executable
