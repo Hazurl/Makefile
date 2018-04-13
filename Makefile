@@ -3,11 +3,11 @@
 # 	/
 #   	build/  
 #			shared/
-#				project-name.so
+#				libproject-name.so
 #				src/
 #					object files...
 #			static/
-#				project-name.a
+#				libproject-name.a
 #				src/
 #					object files...
 #			executable/
@@ -278,7 +278,7 @@ $(TARGET_STATIC): $(_BUILD_DIR) $(_OBJ_SRC_STATIC)
 
 $(BUILD_STATIC_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_FOLDER)/$(call header-of,%$(EXT_SRC_FILE))
 	@$(call _build-msg,$(notdir $@),$(call _join,$(_comma)$(_space),$(strip $(notdir $< $(wildcard $(word 2,$^))))))
-	@g++ -c $(INC_FLAG) $(FLAGS) -o "$@" "$<"
+	@$(CXX) -c $(INC_FLAG) $(FLAGS) -o "$@" "$<"
 
 
 ###
@@ -286,12 +286,12 @@ $(BUILD_STATIC_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_F
 
 $(TARGET_SHARED): $(_BUILD_DIR) $(_OBJ_SRC_SHARED)
 	@$(call _sub-header,Shared library creation...)
-	@g++ $(INC_FLAG) $(FLAGS) -shared -o $(TARGET_SHARED) $(_OBJ_SRC_SHARED) $(LIBS_PATH) $(LIBS)
+	@$(CXX) $(INC_FLAG) $(FLAGS) -shared -o $(TARGET_SHARED) $(_OBJ_SRC_SHARED) $(LIBS_PATH) $(LIBS)
 	@$(call _header,Shared library done ($(TARGET_SHARED)))
 
 $(BUILD_SHARED_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_FOLDER)/$(call header-of,%$(EXT_SRC_FILE))
 	@$(call _build-msg,$(notdir $@),$(call _join,$(_comma)$(_space),$(strip $(notdir $< $(wildcard $(word 2,$^))))))
-	@g++ -c $(INC_FLAG) $(FLAGS) $(SHARED_FLAGS) -o "$@" "$<"
+	@$(CXX) -c $(INC_FLAG) $(FLAGS) $(SHARED_FLAGS) -o "$@" "$<"
 
 
 ###
@@ -299,12 +299,12 @@ $(BUILD_SHARED_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_F
 
 $(TARGET_EXE): $(_BUILD_DIR) $(_OBJ_SRC_EXE)
 	@$(call _sub-header,Linking...)
-	@g++ $(INC_FLAG) $(FLAGS) $(_OBJ_SRC_EXE) -o "$@" $(LIBS_PATH) $(LIBS)
+	@$(CXX) $(INC_FLAG) $(FLAGS) $(_OBJ_SRC_EXE) -o "$@" $(LIBS_PATH) $(LIBS)
 	@$(call _header,Executable done ($(TARGET_EXE)))
 
 $(BUILD_EXE_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_FOLDER)/$(call header-of,%$(EXT_SRC_FILE))
 	@$(call _build-msg,$(notdir $@),$(call _join,$(_comma)$(_space),$(strip $(notdir $< $(wildcard $(word 2,$^))))))
-	@g++ -c $(INC_FLAG) $(FLAGS) -o "$@" "$<"
+	@$(CXX) -c $(INC_FLAG) $(FLAGS) -o "$@" "$<"
 
 
 # Just to avoid file without headers
