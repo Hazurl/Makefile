@@ -204,7 +204,10 @@ $(call _exists-er,$(SRC_FOLDER)/$(SRC_MAIN),$(SRC_FOLDER)/$(SRC_MAIN) doesn't ex
 ##### RULES
 #####
 
-.PHONY: all clean executable shared static
+.PHONY: all executable shared static 
+.PHONY: clean clean-executable clean-shared clean-static
+.PHONY: re re-executable re-shared re-static
+.PHONY: re-run run
 
 all: 
 	@make executable
