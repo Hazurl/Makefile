@@ -19,12 +19,14 @@
 #		inc/
 #			header files...
 
+# Note: inc and src can be the same folder
+
 #####
 ##### FOLDER SETTINGS
 #####
 
-SRC_FOLDER := src
-INC_FOLDER := inc
+SRC_FOLDER := source
+INC_FOLDER := include
 
 BUILD_FOLDER := build
 
@@ -36,7 +38,7 @@ BUILD_EXE_FOLDER := $(BUILD_FOLDER)/executable
 ##### GENERAL SETTINGS
 #####
 
-PROJECT_NAME := placeholder
+PROJECT_NAME := makefile_ex
 CXX := g++
 
 # Targets
@@ -69,7 +71,7 @@ SRC_EXCLUDE_FILE :=
 # All files that are not use for libraries, don't add src/
 SRC_MAINS := main.cpp another_main.cpp
 # The main file to use (must be in $(SRC_MAINS))
-SRC_MAIN := main.cpp
+SRC_MAIN := another_main.cpp
 
 #####
 ##### FLAGS
@@ -161,7 +163,7 @@ endef
 ##### SOURCES
 #####
 
-_SRC_MAINS := $(addprefix src/,$(SRC_MAINS))
+_SRC_MAINS := $(addprefix $(SRC_FOLDER)/,$(SRC_MAINS))
 # All sources files not main
 _SRC_FILES := $(filter-out $(_SRC_MAINS),$(shell find $(SRC_FOLDER) -name '*$(EXT_SRC_FILE)'))
 
