@@ -25,8 +25,8 @@
 ##### FOLDER SETTINGS
 #####
 
-SRC_FOLDER := source
-INC_FOLDER := include
+SRC_FOLDER := src
+INC_FOLDER := src
 
 BUILD_FOLDER := build
 
@@ -38,7 +38,7 @@ BUILD_EXE_FOLDER := $(BUILD_FOLDER)/executable
 ##### GENERAL SETTINGS
 #####
 
-PROJECT_NAME := makefile_ex
+PROJECT_NAME := slib
 CXX := g++
 
 # Targets
@@ -47,7 +47,7 @@ TARGET_STATIC := $(BUILD_STATIC_FOLDER)/lib$(PROJECT_NAME).a
 TARGET_EXE := $(BUILD_EXE_FOLDER)/$(PROJECT_NAME)
 
 # Target to build when `make` or `make all` is typed
-TARGET_ALL := $(TARGET_STATIC) $(TARGET_EXE) $(TARGET_SHARED)
+TARGET_ALL := $(TARGET_STATIC)
 
 #####
 ##### FILES SETTINGS
@@ -72,9 +72,9 @@ header-of = $(1:%$(EXT_SRC_FILE)=%$(EXT_INC_FILE))
 # Relative to $(SRC_FOLDER)
 SRC_EXCLUDE_FILE := 
 # All files that are not use for libraries, don't add src/
-SRC_MAINS := main.cpp another_main.cpp
+SRC_MAINS := 
 # The main file to use (must be in $(SRC_MAINS))
-SRC_MAIN := another_main.cpp
+SRC_MAIN := 
 
 #####
 ##### FLAGS
@@ -91,22 +91,13 @@ INC_FLAG := -I $(INC_FOLDER) -I lib/slib/src -I lib/dlib/src
 
 # Path to libaries if not in $PATH, for example (relative to the project folder): lib/
 # Must be use with -L
-LIBS_PATH := -L lib/slib/build/static/ -L lib/dlib/build/shared/
+LIBS_PATH := 
 
 # For example: -lsfml-graphics
-LIBS := -lslib -ldlib
+LIBS := 
 
 # Library that require to be build
-LIB_TO_BUILD := lib/slib/build/static/libslib.a lib/dlib/build/static/libdlib.so
-
-# Create a rule to build it
-lib/slib/build/static/libslib.a:
-	@$(call _special,BUILDING STATIC LIBRARY ($@)...)
-	@cd lib/slib/ && make | sed "s/^/\t/"
-
-lib/dlib/build/static/libdlib.so:
-	@$(call _special,BUILDING SHARED LIBRARY ($@)...)
-	@cd lib/dlib/ && make | sed "s/^/\t/"
+LIB_TO_BUILD :=
 
 ###############################################
 #                   PRIVATE                   #
