@@ -40,6 +40,7 @@ BUILD_EXE_FOLDER := $(BUILD_FOLDER)/executable
 
 PROJECT_NAME := project_name
 CXX := g++
+SXX := ar
 
 # Targets
 TARGET_SHARED := $(BUILD_SHARED_FOLDER)/lib$(PROJECT_NAME).so
@@ -81,6 +82,8 @@ SRC_MAIN :=
 #####
 
 FLAGS := -std=c++17 -g3 -Wall -Wextra -Wno-pmf-conversions -O2
+STATIC_LINK_FLAG := rcs
+
 # Include path
 # Must be use with -I
 INC_FLAG := -I $(INC_FOLDER)
@@ -210,6 +213,8 @@ export LD_LIBRARY_PATH += $(_LIB_PATH_LD)
 .PHONY: re re-executable re-shared re-static
 .PHONY: re-run run
 
+.DEFAULT_GOAL := all
+
 all:
 ifneq ($(findstring $(TARGET_EXE),$(TARGET_ALL)),)
 	@make executable
@@ -280,7 +285,7 @@ $(_BUILD_DIR):
 
 $(TARGET_STATIC): $(_BUILD_DIR) $(LIB_TO_BUILD) $(_OBJ_SRC_STATIC)
 	@$(call _sub-header,Archiving...)
-	@ar rcs $(TARGET_STATIC) $(_OBJ_SRC_STATIC)
+	@$(SXX) $(STATIC_LINK_FLAG) $(TARGET_STATIC) $(_OBJ_SRC_STATIC)
 	@$(call _header,Static library done ($(TARGET_STATIC)))
 
 $(BUILD_STATIC_FOLDER)/$(SRC_FOLDER)/%.o: $(SRC_FOLDER)/%$(EXT_SRC_FILE) $(INC_FOLDER)/$(call header-of,%$(EXT_SRC_FILE))
