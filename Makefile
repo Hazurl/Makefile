@@ -1,23 +1,23 @@
 # Structure of the project: 
 #
-# 	/
-#   	build/  
-#			shared/
-#				libproject-name.so
-#				src/
-#					object files...
-#			static/
-#				libproject-name.a
-#				src/
-#					object files...
-#			executable/
-#				project-name
-#				src/
-#					object files
-#		src/
-#			sources files...
-#		inc/
-#			header files...
+# /
+#     build/  
+#         shared/
+#             libproject-name.so
+#             src/
+#                 object files...
+#         static/
+#             libproject-name.a
+#             src/
+#                 object files...
+#         executable/
+#             project-name
+#             src/
+#                 object files
+#     src/
+#         sources files...
+#     inc/
+#         header files...
 
 # Note: inc and src can be the same folder
 
