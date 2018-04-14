@@ -26,6 +26,7 @@ X can be replace by executable, shared or static in the following rules.
 ## How to use
 
 Just copy the [Makefile](https://github.com/Hazurl/Makefile/blob/master/Makefile) in your project and set it up.
+The minimal setup consist of [PROJECT_NAME](https://github.com/Hazurl/Makefile/blob/master/Makefile#L41), [TARGET_ALL](https://github.com/Hazurl/Makefile/blob/master/Makefile#L51), [SRC_MAINS](https://github.com/Hazurl/Makefile/blob/master/Makefile#L76) and [SRC_MAIN](https://github.com/Hazurl/Makefile/blob/master/Makefile#L78).
 
 ### Folder settings
 [SRC_FOLDER](https://github.com/Hazurl/Makefile/blob/master/Makefile#L28) is the directory of your sources files (relative to the project directory).
