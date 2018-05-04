@@ -276,6 +276,16 @@ re-run:
 	@make re-executable
 	@make run
 
+valgrind:
+	@make executable
+	@echo
+	@$(call _special,EXECUTING $(TARGET_EXE) WITH VALGRIND...)
+	@valgrind $(TARGET_EXE) $(args); ERR=$$?; $(call _special,PROGRAM HALT WITH CODE $$ERR); exit $$ERR;
+
+re-valgrind:
+	@make re-executable
+	@make valgrind
+
 $(_BUILD_DIR):
 	@mkdir -p $(_BUILD_DIR)
 
