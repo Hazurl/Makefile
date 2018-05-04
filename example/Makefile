@@ -246,15 +246,19 @@ static:
 	@make $(TARGET_STATIC)
 
 clean:
+	@$(call _header,REMOVING $(BUILD_FOLDER))
 	@$(call _remove-folder,$(BUILD_FOLDER))
 
 clean-executable:
+	@$(call _header,REMOVING $(BUILD_EXE_FOLDER))
 	@$(call _remove-folder,$(BUILD_EXE_FOLDER))
 
 clean-shared:
+	@$(call _header,REMOVING $(BUILD_SHARED_FOLDER))
 	@$(call _remove-folder,$(BUILD_SHARED_FOLDER))
 
 clean-static:
+	@$(call _header,REMOVING $(BUILD_STATIC_FOLDER))
 	@$(call _remove-folder,$(BUILD_STATIC_FOLDER))
 
 re:
