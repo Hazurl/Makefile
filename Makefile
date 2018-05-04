@@ -270,8 +270,7 @@ run:
 	@make executable
 	@echo
 	@$(call _special,EXECUTING $(TARGET_EXE)...)
-	@$(TARGET_EXE)
-	@$(call _special,PROGRAM HALT WITH CODE $$?)
+	@$(TARGET_EXE) $(args); ERR=$$?; $(call _special,PROGRAM HALT WITH CODE $$ERR); exit $$ERR;
 
 re-run:
 	@make re-executable
