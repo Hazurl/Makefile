@@ -261,6 +261,15 @@ clean-static:
 	@$(call _header,REMOVING $(BUILD_STATIC_FOLDER))
 	@$(call _remove-folder,$(BUILD_STATIC_FOLDER))
 
+where-executable:
+	@echo $(TARGET_EXE)
+
+where-shared:
+	@echo $(TARGET_SHARED)
+
+where-static:
+	@echo $(TARGET_STATIC)
+
 re:
 	@make clean
 	@make
