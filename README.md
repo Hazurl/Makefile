@@ -23,6 +23,12 @@ X can be replace by executable, shared or static in the following rules.
 
 `make re-run` : clean, build then run the executable
 
+`make valgrind` : similar to `make run` but execute it with valgrind (`valgrind $(executable_path)`)
+
+`make re-valgrind` : similar to `make re-run` but execute it with valgrind (`valgrind $(executable_path)`)
+
+`where-X` : output the path to the target
+
 ## How to use
 
 Just copy the [Makefile](https://github.com/Hazurl/Makefile/blob/master/Makefile) in your project and set it up.
